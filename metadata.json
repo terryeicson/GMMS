@@ -1,0 +1,6 @@
+{
+  "name": "GMMS - Government Market Management System",
+  "description": "Municipal marketplace digitization platform for local government authorities in Rwanda featuring visual stall mapping, smart penalty automation past the 5th of the month, vendor sub-letting relational tracking, and XAMPP/PHP/MySQL architecture blueprints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
