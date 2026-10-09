@@ -98,6 +98,57 @@ export interface PenaltyAuditLog {
   triggerType: 'CRON_SCHEDULED' | 'MANUAL_AUDIT' | 'DATE_SIMULATION';
 }
 
+export type MunicipalRole =
+  | 'DISTRICT_REVENUE_AUDITOR'
+  | 'MARKET_HUB_MASTER'
+  | 'FIELD_TAX_ENFORCER'
+  | 'SYSTEM_CRON_DAEMON';
+
+export interface UssdMomoTransaction {
+  id: string;
+  momoRef: string;
+  ussdSessionCode: string;
+  allocationId: string;
+  stallCode: string;
+  marketName: string;
+  payerName: string;
+  payerPhone: string;
+  provider: 'MTN_MOMO' | 'AIRTEL_MONEY';
+  amountRwf: number;
+  syncStatus: 'QUEUED_OFFLINE' | 'SYNCED_LEDGER';
+  createdAt: string;
+  syncedAt: string | null;
+}
+
+export interface RevenueLeakageAlert {
+  id: string;
+  alertCode: string;
+  stallCode: string;
+  marketName: string;
+  category:
+    | 'ILLEGAL_SUBLEASE_MARKUP'
+    | 'UNREMITTED_SUBTENANT_PASS_THROUGH'
+    | 'CHRONIC_FIFTH_DAY_DEFAULT';
+  severity: 'CRITICAL' | 'HIGH' | 'MODERATE';
+  primaryHolderName: string;
+  operationalTenantName: string | null;
+  estimatedMonthlyLeakageRwf: number;
+  description: string;
+  status: 'OPEN_INVESTIGATION' | 'NOTICE_DISPATCHED' | 'RESOLVED';
+  detectedAt: string;
+}
+
+export interface RbacAuditEntry {
+  id: string;
+  timestamp: string;
+  actorRole: MunicipalRole;
+  actorName: string;
+  actionType: string;
+  targetAsset: string;
+  summary: string;
+  verificationHash: string;
+}
+
 export interface GMMSState {
   simulatedDate: string;
   markets: MarketHub[];
